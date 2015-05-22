@@ -2,7 +2,7 @@ package gameproject;
 
 /**
  *
- * @author jeremystark, blackalek,The Meowseph Stalin, and mrMcMonigle
+ * @author jeremystark, blackalek,The Meowseph Stalin, mrMcMonigle, and Cingel
  */
 public class GameProject
 {
