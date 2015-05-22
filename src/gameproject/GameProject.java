@@ -13,10 +13,6 @@ public class GameProject
     private int width = 800;
     private int height = 600;
     
-    /**
-     * @param args the command line arguments
-     */
-    
     public GameProject()
     {
         JFrame f = new JFrame();
@@ -28,6 +24,9 @@ public class GameProject
         f.setVisible(true);
     }
     
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args)
     {
         GameProject gp = new GameProject();
