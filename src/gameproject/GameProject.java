@@ -9,9 +9,9 @@ import javax.swing.*;
 public class GameProject
 {
 
-    private String title = "Game!";
-    private int width = 800;
-    private int height = 600;
+    private final String title = "Game!";
+    private final int width = 800;
+    private final int height = 600;
     
     public GameProject()
     {
