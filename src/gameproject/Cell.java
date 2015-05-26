@@ -10,14 +10,16 @@ public class Cell
 {
     private int x = 0;
     private int y = 0;
-    private int r = 0;
+    private int radius = 0;
     private int velocityX = 0; 
     private int velocityY = 0;
     
     
-    public Cell(int radius)
+    public Cell(int x, int y, int r)
     {
-        r = radius;
+        this.x = x;
+        this.y = y;
+        this.radius = r;
     }
     public int getX()
     {
