@@ -1,5 +1,6 @@
 package gameproject;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics2D;
 
@@ -48,7 +49,8 @@ public class Cell
     
     public void draw(Graphics2D g)
     {
-        
+        g.setColor(Color.GREEN);
+        g.drawOval(x, y, radius * 2, radius * 2);
     }
     
 }
