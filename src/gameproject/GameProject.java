@@ -35,7 +35,7 @@ public class GameProject
      */
     public static void main(String[] args)
     {
-        GameProject gp = new GameProject("Game");
+        GameProject gp = new GameProject();
     }
     
 }
