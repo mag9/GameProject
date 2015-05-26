@@ -1,6 +1,7 @@
 package gameproject;
 
 import java.awt.event.KeyEvent;
+import java.awt.Graphics2D;
 
 /**
  *
@@ -40,5 +41,14 @@ public class Cell
     
     }
     
+    public void keyReleased(KeyEvent e)
+    {
+        
+    }
+    
+    public void draw(Graphics2D g)
+    {
+        
+    }
     
 }
