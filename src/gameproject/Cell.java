@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author blackalek
+ * @author everybody
  */
 public class Cell
 {
