@@ -1,5 +1,6 @@
 package gameproject;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
 
 /**
@@ -9,25 +10,44 @@ import javax.swing.*;
 public class GameProject
 {
 
-    private final String title = "Agar 2.0";
+    /**
+     * The title of the window.
+     */
+    private final String title = "OHS Agar";
+    
+    /**
+     * The width of the game.
+     */
     public static int WIDTH = 800;
+    
+    /**
+     * The height of the game.
+     */
     public static int HEIGHT = 600;
-    private final int width = 800;
-    private final int height = 600;
     
     /**
      * Constructor
      */
     public GameProject()
     {
-        JFrame f = new JFrame();
-        f.add(new TitleScreen());
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(false);
-        f.setTitle(title);
-        f.setSize(WIDTH, HEIGHT);
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
+        // Create a new frame
+        JFrame frame = new JFrame();
+        
+        // Set frame settings
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setTitle(title);
+        frame.setSize(WIDTH, HEIGHT);
+        frame.setLocationRelativeTo(null);
+        
+        // Create a new title screen
+        TitleScreen titleScreen = new TitleScreen();
+        
+        // Add the title screen to the frame
+        frame.add(titleScreen);
+        
+        // Make the window visible to the user
+        frame.setVisible(true);
     }
     
     /**
