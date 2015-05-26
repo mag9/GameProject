@@ -14,6 +14,7 @@ public class Cell
     private int velocityX = 0; 
     private int velocityY = 0;
     
+    
     public Cell(int radius)
     {
         r = radius;
