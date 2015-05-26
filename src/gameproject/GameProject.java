@@ -9,11 +9,10 @@ import javax.swing.*;
 public class GameProject
 {
 
-    private final String title = "Game!";
     private final int width = 800;
     private final int height = 600;
     
-    public GameProject()
+    public GameProject(String title)
     {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,7 +28,7 @@ public class GameProject
      */
     public static void main(String[] args)
     {
-        GameProject gp = new GameProject();
+        GameProject gp = new GameProject("Game");
     }
     
 }
