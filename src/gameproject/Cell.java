@@ -8,18 +8,22 @@ import java.awt.event.KeyEvent;
  */
 public class Cell
 {
-    private int x = 0;
-    private int y = 0;
-    private int radius = 0;
-    private int velocityX = 0; 
-    private int velocityY = 0;
+    private int x;
+    private int y;
+    private int radius;
+    private int velocityX; 
+    private int velocityY;
+    private String color;
     
     
-    public Cell(int x, int y, int r)
+    public Cell(int x, int y, int r, String c)
     {
         this.x = x;
         this.y = y;
         this.radius = r;
+        this.color = c;
+        this.velocityX = 0;
+        this.velocityY = 0;
     }
     public int getX()
     {
