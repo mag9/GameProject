@@ -42,7 +42,7 @@ public class TitleScreen extends JPanel implements ActionListener
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, GameProject.WIDTH, GameProject.HEIGHT);
         
-        g2d.drawImage(logo, 0, 0, null);
+        g2d.drawImage(logo, (GameProject.WIDTH / 2) - (logo.getWidth(this) / 2), 0, null);
         
         System.out.println("logo drawn");
     }
