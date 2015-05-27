@@ -15,7 +15,8 @@ public class Cell
     private int radius;
     private int velocityX; 
     private int velocityY;
-    private String color;
+    private String color; 
+    private int score;
     
     /**
      * Constructor
