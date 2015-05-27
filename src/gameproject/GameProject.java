@@ -60,6 +60,9 @@ public class GameProject
         
         // Make the window visible to the user
         frame.setVisible(true);
+        
+        titleScreen.getStartButton().requestFocus();
+        frame.getRootPane().setDefaultButton(titleScreen.getStartButton());
     }
     
     /**

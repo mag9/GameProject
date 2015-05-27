@@ -23,9 +23,20 @@ public class TitleScreen extends JPanel implements ActionListener
     private final JButton exitButton;
     
     /**
+     * The text field.
+     */
+    private final JTextField userName;
+    
+    /**
      * The width of a button.
      */
     private static final int BUTTON_WIDTH = 300;
+    
+    /**
+     * Text field width constant.
+     * 
+     */
+    private static final int FIELD_WIDTH = 150;
 
     /**
      *  Logo for the game
@@ -47,17 +58,25 @@ public class TitleScreen extends JPanel implements ActionListener
         logo = new ImageIcon(getClass().getResource("/gameproject/res/graphics/logo.png")).getImage();
         
         setLayout(null);
+        
+        userName = new HintTextField("Username");
+        userName.setLocation(GameProject.WIDTH / 2 - (FIELD_WIDTH / 2), 230);
+        userName.setSize(FIELD_WIDTH, 30);
+        add(userName);
+        
         startButton = new JButton("Start");
-        startButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 230);
+        startButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 280);
         startButton.setSize(BUTTON_WIDTH, 100);
         add(startButton);
         startButton.addActionListener(this);
         
         exitButton = new JButton("Exit");
-        exitButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 350);
+        exitButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 400);
         exitButton.setSize(BUTTON_WIDTH, 100);
         add(exitButton);
         exitButton.addActionListener(this);
+        
+        startButton.requestFocusInWindow();
     }
     
     /**
@@ -95,6 +114,11 @@ public class TitleScreen extends JPanel implements ActionListener
         super.paint(g);
         
         g2d.drawImage(logo, (GameProject.WIDTH / 2) - (logo.getWidth(this) / 2), 0, null);
+    }
+
+    public JButton getStartButton()
+    {
+        return startButton;
     }
 
 }

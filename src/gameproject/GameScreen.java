@@ -37,7 +37,7 @@ public class GameScreen extends JPanel implements ActionListener
         addKeyListener(new GameKeyListener());
         setFocusable(true);
         
-        player = new Cell(Color.GREEN, 20, 20, 20);
+        player = new Cell("Jerome McCoolSwag", Color.GREEN, 20, 20, 20);
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
         

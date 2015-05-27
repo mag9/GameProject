@@ -49,13 +49,18 @@ public class Cell
     private int score;
     
     /**
+     * The player's username.
+     */
+    private final String username;
+    
+    /**
      * Constructor
      * @param x The X position of the player/cell.
      * @param y The Y position of the player/cell.
      * @param r The radius of the player/cell.
      * @param c The color(?) of the player/cell.
      */
-    public Cell(Color c, int x, int y, int r)
+    public Cell(String username, Color c, int x, int y, int r)
     {
         this.color = c;
         this.x = x;
@@ -63,6 +68,7 @@ public class Cell
         this.radius = r;
         this.velocityX = 0;
         this.velocityY = 0;
+        this.username = username;
     }
     
     /**
@@ -167,6 +173,9 @@ public class Cell
         g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(3));
         g2d.drawOval(x, y, radius * 2, radius * 2);
+        
+        int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
+        g2d.drawString(username, x - (nameWidth / 2) + (radius), y - 5);
         
         move(velocityX*3, velocityY*3);
     }
