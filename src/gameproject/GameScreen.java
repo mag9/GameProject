@@ -6,21 +6,31 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
+ * The game screen.
  * @author jeremystark
  **/
 
 public class GameScreen extends JPanel implements ActionListener
 {
+    /**
+     * The player's cell.
+     */
     private final Cell player;
     
-    private Image backgroundImage;
+    /**
+     * The background image.
+     */
+    private final Image backgroundImage;
     
+    /**
+     * Creates a new GameScreen.
+     */
     public GameScreen()
     {
         addKeyListener(new GameKeyListener());
         setFocusable(true);
         
-        player = new Cell(20, 20, 20, "Color.GREEN");
+        player = new Cell(Color.GREEN, 20, 20, 20);
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
         
@@ -28,12 +38,20 @@ public class GameScreen extends JPanel implements ActionListener
         timer.start();
     }
     
+    /**
+     * Called by the timer.
+     * @param e The event.
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
         repaint();
     }
     
+    /**
+     * Paint the game screen.
+     * @param g The graphics context.
+     */
     @Override
     public void paint(Graphics g)
     {
@@ -44,10 +62,12 @@ public class GameScreen extends JPanel implements ActionListener
         g2d.drawImage(backgroundImage, 0, 0, null);
         
         // Draw the player.
-        //g2d.fillOval(player.getX(), player.getY(), player.getRadius(), player.getRadius());
         player.draw(g2d);
     }
     
+    /**
+     * The class that listens for key events.
+     */
     private class GameKeyListener extends KeyAdapter
     {
 

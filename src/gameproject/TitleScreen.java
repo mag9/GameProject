@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
+ * The title screen.
  * @author jeremystark
  **/
 
@@ -14,12 +15,12 @@ public class TitleScreen extends JPanel implements ActionListener
     /**
      * The start button.
      */
-    private JButton startButton;
+    private final JButton startButton;
     
     /**
      * The exit button.
      */
-    private JButton exitButton;
+    private final JButton exitButton;
     
     /**
      * The width of a button.
@@ -52,6 +53,10 @@ public class TitleScreen extends JPanel implements ActionListener
         exitButton.addActionListener(this);
     }
     
+    /**
+     * Called when a button is pressed.
+     * @param e The event.
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -66,6 +71,10 @@ public class TitleScreen extends JPanel implements ActionListener
         }
     }
     
+    /**
+     * Paint the title screen.
+     * @param g The graphics context.
+     */
     @Override
     public void paint(Graphics g)
     {

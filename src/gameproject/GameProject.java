@@ -1,12 +1,11 @@
 package gameproject;
 
-import java.awt.BorderLayout;
 import javax.swing.*;
 
 /**
+ * The main game project class.
  * @author jeremystark, blackalek,The Meowseph Stalin, mrMcMonigle, and Cingel.
  */
-
 public class GameProject
 {
     
@@ -20,20 +19,23 @@ public class GameProject
      */
     public static int HEIGHT = 600;
     
-    public static JFrame frame;
+    /**
+     * The game's window.
+     */
+    public JFrame frame;
     
     /**
      * Constructor
+     * @param title The title of the window.
      */
     public GameProject(String title)
     {
         // Create a new frame
-        frame = new JFrame();
+        frame = new JFrame(title);
         
         // Set frame settings
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle(title);
         frame.setSize(WIDTH, HEIGHT);
         frame.setLocationRelativeTo(null);
         
@@ -51,7 +53,8 @@ public class GameProject
     }
     
     /**
-     * @param args the command line arguments
+     * The main method.
+     * @param args The command line arguments.
      */
     public static void main(String[] args)
     {

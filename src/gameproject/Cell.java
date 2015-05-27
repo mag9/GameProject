@@ -5,17 +5,46 @@ import java.awt.event.KeyEvent;
 import java.awt.Graphics2D;
 
 /**
+ * A Cell in the game.
  * @author everybody
  */
 
 public class Cell
 {
+        
+    /**
+     * The color of the cell.
+     */
+    private final Color color;
+    
+    /**
+     * The X location of the cell.
+     */
     private int x;
+    
+    /**
+     * The Y location of the cell.
+     */
     private int y;
+    
+    /**
+     * The radius of the cell.
+     */
     private int radius;
-    private int velocityX; 
+    
+    /**
+     * The X velocity of the cell.
+     */
+    private int velocityX;
+    
+    /**
+     * The Y velocity of the cell.
+     */
     private int velocityY;
-    private String color; 
+    
+    /**
+     * The cell's current score.
+     */
     private int score;
     
     /**
@@ -25,18 +54,19 @@ public class Cell
      * @param r The radius of the player/cell.
      * @param c The color(?) of the player/cell.
      */
-    public Cell(int x, int y, int r, String c)
+    public Cell(Color c, int x, int y, int r)
     {
+        this.color = c;
         this.x = x;
         this.y = y;
         this.radius = r;
-        this.color = c;
         this.velocityX = 0;
         this.velocityY = 0;
     }
     
     /**
-     * @return Returns the player's X position.
+     * Get the player's X position.
+     * @return The player's X position.
      */
     public int getX()
     {
@@ -44,7 +74,8 @@ public class Cell
     }
     
     /**
-     * @return Returns the player's Y position.
+     * Get the player's Y position.
+     * @return The player's Y position.
      */
     public int getY()
     {
@@ -52,23 +83,36 @@ public class Cell
     }
     
     /**
-     * @return Returns the player's current radius.
+     * Get the cell's radius.
+     * @return The cell's current radius.
      */
     public int getRadius()
     {
         return radius;
     }
     
-    public void setRadius(int rad)
+    /**
+     * Set the cell's radius.
+     * @param radius The radius.
+     */
+    public void setRadius(int radius)
     {
-        radius = rad;
+        this.radius = radius;
     }
     
+    /**
+     * Get the current size of the cell.
+     * @return The current size.
+     */
     public int getSize()
     {
         return radius * 2;
     }
     
+    /**
+     * Called when a key is pressed.
+     * @param e The key event.
+     */
     public void keyPressed(KeyEvent e)
     {
         
@@ -87,6 +131,10 @@ public class Cell
             velocityY = +1;
     }
     
+    /**
+     * Called when a key is released.
+     * @param e The event.
+     */
     public void keyReleased(KeyEvent e)
     {
         int key = e.getKeyCode();
@@ -104,16 +152,25 @@ public class Cell
             velocityY = 0;
     }
     
+    /**
+     * Draw the cell.
+     * @param g The graphics context.
+     */
     public void draw(Graphics2D g)
     {
         Graphics2D g2d = (Graphics2D) g;
         
-        g2d.setColor(Color.GREEN);
+        g2d.setColor(color);
         g2d.fillOval(x, y, radius * 2, radius * 2);
         
         move(velocityX*3, velocityY*3);
     }
     
+    /**
+     * Move the cell.
+     * @param deltaX The delta X value.
+     * @param deltaY The delta Y value.
+     */
     public void move(int deltaX, int deltaY)
     {
         x = x + deltaX;
