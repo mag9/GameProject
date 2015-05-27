@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 /**
- *
  * @author jeremystark, blackalek,The Meowseph Stalin, mrMcMonigle, and Cingel.
  */
+
 public class GameProject
 {
 
@@ -25,13 +25,15 @@ public class GameProject
      */
     public static int HEIGHT = 600;
     
+    public static JFrame frame;
+    
     /**
      * Constructor
      */
     public GameProject()
     {
         // Create a new frame
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         
         // Set frame settings
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,11 +42,14 @@ public class GameProject
         frame.setSize(WIDTH, HEIGHT);
         frame.setLocationRelativeTo(null);
         
-        // Create a new title screen
+        // Create a new title screen instance.
         TitleScreen titleScreen = new TitleScreen();
         
+        // Create a new game screen instance.
+        GameScreen gameScreen = new GameScreen();
+        
         // Add the title screen to the frame
-        frame.add(titleScreen);
+        frame.add(gameScreen);
         
         // Make the window visible to the user
         frame.setVisible(true);

@@ -58,20 +58,25 @@ public class Cell
         return radius;
     }
     
+    public int getSize()
+    {
+        return radius * 2;
+    }
+    
     public void keyPressed(KeyEvent e)
     {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT)
+        if (key == KeyEvent.VK_A)
             x = -1;
 
-        if (key == KeyEvent.VK_RIGHT)
+        if (key == KeyEvent.VK_D)
             x = +1;
 
-        if (key == KeyEvent.VK_UP)
+        if (key == KeyEvent.VK_W)
             y = -1;
 
-        if (key == KeyEvent.VK_DOWN)
+        if (key == KeyEvent.VK_S)
             y = +1;
     }
     
@@ -79,23 +84,31 @@ public class Cell
     {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT)
+        if (key == KeyEvent.VK_A)
             x = 0;
 
-        if (key == KeyEvent.VK_RIGHT)
+        if (key == KeyEvent.VK_D)
             x = 0;
 
-        if (key == KeyEvent.VK_UP)
+        if (key == KeyEvent.VK_W)
             y = 0;
 
-        if (key == KeyEvent.VK_DOWN)
+        if (key == KeyEvent.VK_S)
             y = 0;
     }
     
     public void draw(Graphics2D g)
     {
-        g.setColor(Color.GREEN);
-        g.drawOval(x, y, radius * 2, radius * 2);
+        Graphics2D g2d = (Graphics2D) g;
+        
+        g2d.setColor(Color.GREEN);
+        g2d.drawOval(x, y, radius * 2, radius * 2);
+    }
+    
+    public void move(int deltaX, int deltaY)
+    {
+        x = x - deltaX;
+        y = y - deltaY;
     }
     
 }
