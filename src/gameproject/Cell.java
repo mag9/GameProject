@@ -1,5 +1,6 @@
 package gameproject;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics2D;
@@ -162,6 +163,10 @@ public class Cell
         
         g2d.setColor(color);
         g2d.fillOval(x, y, radius * 2, radius * 2);
+        
+        g2d.setColor(Color.BLACK);
+        g2d.setStroke(new BasicStroke(3));
+        g2d.drawOval(x, y, radius * 2, radius * 2);
         
         move(velocityX*3, velocityY*3);
     }
