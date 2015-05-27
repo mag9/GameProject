@@ -70,16 +70,16 @@ public class Cell
         
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_A)
+        if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT)
             velocityX = -1;
 
-        if (key == KeyEvent.VK_D)
+        if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT)
             velocityX = +1;
 
-        if (key == KeyEvent.VK_W)
+        if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP)
             velocityY = -1;
 
-        if (key == KeyEvent.VK_S)
+        if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN)
             velocityY = +1;
     }
     
