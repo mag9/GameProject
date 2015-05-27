@@ -60,6 +60,11 @@ public class TitleScreen extends JPanel implements ActionListener
         {
             System.exit(0);
         }
+        
+        if(e.getSource() == startButton)
+        {
+            // TODO: Remove TitleScreen and add GameScreen
+        }
     }
     
     @Override
