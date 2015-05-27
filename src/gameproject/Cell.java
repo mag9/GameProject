@@ -58,6 +58,11 @@ public class Cell
         return radius;
     }
     
+    public void setRadius(int rad)
+    {
+        radius = rad;
+    }
+    
     public int getSize()
     {
         return radius * 2;
