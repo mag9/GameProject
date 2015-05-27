@@ -9,7 +9,7 @@ import javax.swing.*;
  * @author jeremystark
  **/
 
-public class GameScreen extends JPanel implements ActionListener 
+public class GameScreen extends JPanel implements ActionListener
 {
     private final Cell player;
     
@@ -18,17 +18,19 @@ public class GameScreen extends JPanel implements ActionListener
     public GameScreen()
     {
         addKeyListener(new GameKeyListener());
+        setFocusable(true);
         
         player = new Cell(20, 20, 20, "Color.GREEN");
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
+        
+        Timer timer = new Timer(1000/60, this);
+        timer.start();
     }
     
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        player.move(-1, -1);
-        
         repaint();
     }
     
@@ -42,7 +44,8 @@ public class GameScreen extends JPanel implements ActionListener
         g2d.drawImage(backgroundImage, 0, 0, null);
         
         // Draw the player.
-        g2d.fillOval(player.getX(), player.getY(), player.getRadius(), player.getRadius());
+        //g2d.fillOval(player.getX(), player.getY(), player.getRadius(), player.getRadius());
+        player.draw(g2d);
     }
     
     private class GameKeyListener extends KeyAdapter

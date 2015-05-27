@@ -65,19 +65,22 @@ public class Cell
     
     public void keyPressed(KeyEvent e)
     {
+        
+        System.out.println("Key pressed");
+        
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_A)
-            x = -1;
+            velocityX = -1;
 
         if (key == KeyEvent.VK_D)
-            x = +1;
+            velocityX = +1;
 
         if (key == KeyEvent.VK_W)
-            y = -1;
+            velocityY = -1;
 
         if (key == KeyEvent.VK_S)
-            y = +1;
+            velocityY = +1;
     }
     
     public void keyReleased(KeyEvent e)
@@ -85,16 +88,16 @@ public class Cell
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_A)
-            x = 0;
+            velocityX = 0;
 
         if (key == KeyEvent.VK_D)
-            x = 0;
+            velocityX = 0;
 
         if (key == KeyEvent.VK_W)
-            y = 0;
+            velocityY = 0;
 
         if (key == KeyEvent.VK_S)
-            y = 0;
+            velocityY = 0;
     }
     
     public void draw(Graphics2D g)
@@ -102,13 +105,15 @@ public class Cell
         Graphics2D g2d = (Graphics2D) g;
         
         g2d.setColor(Color.GREEN);
-        g2d.drawOval(x, y, radius * 2, radius * 2);
+        g2d.fillOval(x, y, radius * 2, radius * 2);
+        
+        move(velocityX*3, velocityY*3);
     }
     
     public void move(int deltaX, int deltaY)
     {
-        x = x - deltaX;
-        y = y - deltaY;
+        x = x + deltaX;
+        y = y + deltaY;
     }
     
 }
