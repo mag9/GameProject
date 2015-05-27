@@ -22,7 +22,17 @@ public class GameProject
     /**
      * The game's window.
      */
-    public JFrame frame;
+    private final JFrame frame;
+    
+    /**
+     * The title screen.
+     */
+    private final TitleScreen titleScreen;
+    
+    /**
+     * The game screen.
+     */
+    private final GameScreen gameScreen;
     
     /**
      * Constructor
@@ -40,16 +50,34 @@ public class GameProject
         frame.setLocationRelativeTo(null);
         
         // Create a new title screen instance.
-        TitleScreen titleScreen = new TitleScreen();
+        titleScreen = new TitleScreen(this);
         
         // Create a new game screen instance.
-        GameScreen gameScreen = new GameScreen();
+        gameScreen = new GameScreen(this);
         
         // Add the title screen to the frame
-        frame.add(gameScreen);
+        frame.add(titleScreen);
         
         // Make the window visible to the user
         frame.setVisible(true);
+    }
+    
+    /**
+     * Start the game.
+     */
+    public void startGame()
+    {
+        frame.add(gameScreen);
+        gameScreen.requestFocus();
+    }
+    
+    /**
+     * End the game.
+     */
+    public void endGame()
+    {
+        frame.remove(gameScreen);
+        titleScreen.setVisible(true);
     }
     
     /**

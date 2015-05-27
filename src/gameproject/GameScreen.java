@@ -23,10 +23,17 @@ public class GameScreen extends JPanel implements ActionListener
     private final Image backgroundImage;
     
     /**
-     * Creates a new GameScreen.
+     * The instance of the game.
      */
-    public GameScreen()
+    private final GameProject game;
+    
+    /**
+     * Creates a new GameScreen.
+     * @param game The instance of the game.
+     */
+    public GameScreen(GameProject game)
     {
+        this.game = game;
         addKeyListener(new GameKeyListener());
         setFocusable(true);
         
@@ -90,6 +97,10 @@ public class GameScreen extends JPanel implements ActionListener
         @Override
         public void keyPressed(KeyEvent e)
         {
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+            {
+                game.endGame();
+            }
             player.keyPressed(e);
         }
     }

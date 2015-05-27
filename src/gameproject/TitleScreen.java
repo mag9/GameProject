@@ -33,10 +33,17 @@ public class TitleScreen extends JPanel implements ActionListener
     private final Image logo;
     
     /**
-     * Constructor
+     * The instance of the game.
      */
-    public TitleScreen()
+    private final GameProject game;
+    
+    /**
+     * Constructor
+     * @param game The game.
+     */
+    public TitleScreen(GameProject game)
     {
+        this.game = game;
         logo = new ImageIcon(getClass().getResource("/gameproject/res/graphics/logo.png")).getImage();
         
         setLayout(null);
@@ -67,7 +74,9 @@ public class TitleScreen extends JPanel implements ActionListener
         }
         else if(e.getSource() == startButton)
         {
-            // TODO: Remove TitleScreen and add GameScreen
+            // Start the game!
+            setVisible(false);
+            game.startGame();
         }
     }
     
