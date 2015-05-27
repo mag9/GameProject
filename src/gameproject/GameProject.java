@@ -9,11 +9,6 @@ import javax.swing.*;
 
 public class GameProject
 {
-
-    /**
-     * The title of the window.
-     */
-    private final String title = "OHS Agar";
     
     /**
      * The width of the game.
@@ -30,7 +25,7 @@ public class GameProject
     /**
      * Constructor
      */
-    public GameProject()
+    public GameProject(String title)
     {
         // Create a new frame
         frame = new JFrame();
@@ -60,7 +55,7 @@ public class GameProject
      */
     public static void main(String[] args)
     {
-        GameProject gp = new GameProject();
+        GameProject gp = new GameProject("OHS Agar");
     }
     
 }
