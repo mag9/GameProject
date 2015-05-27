@@ -66,8 +66,6 @@ public class Cell
     public void keyPressed(KeyEvent e)
     {
         
-        System.out.println("Key pressed");
-        
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT)
