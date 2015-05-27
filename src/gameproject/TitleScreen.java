@@ -11,6 +11,15 @@ import javax.swing.*;
 
 public class TitleScreen extends JPanel implements ActionListener 
 {
+    /**
+     * The start button.
+     */
+    private JButton startButton;
+    
+    /**
+     * The exit button.
+     */
+    private JButton exitButton;
     
     /**
      * The width of a button.
@@ -30,27 +39,32 @@ public class TitleScreen extends JPanel implements ActionListener
         logo = new ImageIcon(getClass().getResource("/gameproject/res/graphics/logo.png")).getImage();
         
         setLayout(null);
-        JButton startButton = new JButton("Start");
+        startButton = new JButton("Start");
         startButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 230);
         startButton.setSize(BUTTON_WIDTH, 100);
         add(startButton);
+        startButton.addActionListener(this);
         
-        JButton exitButton = new JButton("Exit");
+        exitButton = new JButton("Exit");
         exitButton.setLocation(GameProject.WIDTH / 2 - (BUTTON_WIDTH / 2), 350);
         exitButton.setSize(BUTTON_WIDTH, 100);
         add(exitButton);
+        exitButton.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        // If the exit button is pressed, the game exits.
+        if(e.getSource() == exitButton)
+        {
+            System.exit(0);
+        }
     }
     
     @Override
     public void paint(Graphics g)
     {
-        
         Graphics2D g2d = (Graphics2D) g;
         
         g2d.setColor(Color.WHITE);
@@ -59,10 +73,6 @@ public class TitleScreen extends JPanel implements ActionListener
         super.paint(g);
         
         g2d.drawImage(logo, (GameProject.WIDTH / 2) - (logo.getWidth(this) / 2), 0, null);
-        
-        System.out.println("logo drawn");
-        
-        
     }
 
 }
