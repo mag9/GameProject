@@ -10,28 +10,13 @@ import java.awt.Graphics2D;
  * @author everybody
  */
 
-public class Cell
+public class Cell extends Circle
 {
         
     /**
      * The color of the cell.
      */
     private final Color color;
-    
-    /**
-     * The X location of the cell.
-     */
-    private int x;
-    
-    /**
-     * The Y location of the cell.
-     */
-    private int y;
-    
-    /**
-     * The radius of the cell.
-     */
-    private int radius;
     
     /**
      * The X velocity of the cell.

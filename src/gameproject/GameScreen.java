@@ -3,6 +3,8 @@ package gameproject;
 import java.awt.*;
 import java.awt.Image;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.*;
 
 /**
@@ -18,9 +20,9 @@ public class GameScreen extends JPanel implements ActionListener
     private Cell player;
     
     /**
-     * A nibbly bit.
+     * The nibbly bits.
      */
-    private final NibblyBits nb;
+    private final ArrayList<NibblyBits> bits;
     
     /**
      * The background image.
@@ -42,7 +44,7 @@ public class GameScreen extends JPanel implements ActionListener
         addKeyListener(new GameKeyListener());
         setFocusable(true);
         
-        nb = new NibblyBits();
+        bits = new ArrayList<NibblyBits>();
         // "Jerome McCoolSwag"
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
@@ -54,6 +56,11 @@ public class GameScreen extends JPanel implements ActionListener
     public void startGame()
     {
         player = new Cell(game.getTitleScreen().getUsername(), Color.GREEN, 20, 20, 20);
+        
+        for (int i = 0; i < 200; i++)
+        {
+            bits.add(new NibblyBits());
+        }
     }
     
     /**
@@ -79,8 +86,22 @@ public class GameScreen extends JPanel implements ActionListener
         // Draw the background.
         g2d.drawImage(backgroundImage, 0, 0, null);
        
-        //Draw the nibbly bit.
-        nb.draw(g2d);
+        //Draw the nibbly bits.
+        Iterator<NibblyBits> iterator = bits.iterator();
+        
+        while (iterator.hasNext())
+        {
+            NibblyBits next = iterator.next();
+            if (next.collidesWith(player))
+            {
+                // Remove it
+                iterator.remove();
+            }
+            {
+                next.draw(g2d);
+            }
+        }
+        
         
         // Draw the player.
         player.draw(g2d);

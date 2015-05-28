@@ -6,7 +6,7 @@ import java.awt.*;
  * @author jeremystark
  **/
 
-public class NibblyBits 
+public class NibblyBits extends Circle
 {
 
     /**
@@ -14,11 +14,6 @@ public class NibblyBits
      * Will always be 1.
      */
     private final int size;
-    
-    /**
-     * The x and y position of the nibbly bit.
-     */
-    private int x, y;
     
     /**
      * The color of the nibbly bit.
@@ -41,8 +36,8 @@ public class NibblyBits
         size = 1;
         x = 0 + (int)(Math.random()* GameProject.WIDTH);
         y = 0 + (int)(Math.random()* GameProject.HEIGHT); 
-        randomColor = 0 + (int)(Math.random()* 100); 
-        color = new Color(randomColor, randomColor, randomColor);
+        color = new Color(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255));
+        radius = 10;
     }
     
     /**
@@ -69,12 +64,34 @@ public class NibblyBits
     {
         Graphics2D g2d = (Graphics2D) g;
         
-        if(checkCollision() == false)
+        g2d.setColor(color);
+        g2d.fillOval(x, y, size * 10, size  * 10);
+        
+        /*if(checkCollision() == false)
         {
             g2d.setColor(color);
             g2d.fillOval(x, y, size * 10, size  * 10);
         } else {
             g2d.dispose();
+        }*/
+    }
+    
+    /**
+     * Generate a random integer.
+     * @param lowestNumber The lowest possible number. (Included)
+     * @param highestNumber The highest possible number. (Included)
+     * @return The generated number.
+     */
+    public static int randomInt(int lowestNumber, int highestNumber)
+    {
+        if (highestNumber < lowestNumber)
+        {
+            int temp = highestNumber;
+            highestNumber = lowestNumber;
+            lowestNumber = temp;
         }
+        highestNumber++;
+        int theRange = highestNumber-lowestNumber;
+        return (int)(java.lang.Math.random() * (theRange)) + lowestNumber;
     }
 }
