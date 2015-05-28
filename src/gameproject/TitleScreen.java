@@ -120,5 +120,10 @@ public class TitleScreen extends JPanel implements ActionListener
     {
         return startButton;
     }
+    
+    public String getUsername()
+    {
+        return userName.getText();
+    }
 
 }

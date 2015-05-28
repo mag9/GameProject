@@ -70,6 +70,7 @@ public class GameProject
      */
     public void startGame()
     {
+        gameScreen.startGame();
         frame.add(gameScreen);
         gameScreen.requestFocus();
     }
@@ -81,6 +82,11 @@ public class GameProject
     {
         frame.remove(gameScreen);
         titleScreen.setVisible(true);
+    }
+    
+    public TitleScreen getTitleScreen()
+    {
+        return titleScreen;
     }
     
     /**

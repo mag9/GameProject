@@ -15,7 +15,7 @@ public class GameScreen extends JPanel implements ActionListener
     /**
      * The player's cell.
      */
-    private final Cell player;
+    private Cell player;
     
     /**
      * A nibbly bit.
@@ -43,12 +43,17 @@ public class GameScreen extends JPanel implements ActionListener
         setFocusable(true);
         
         nb = new NibblyBits();
-        player = new Cell("Jerome McCoolSwag", Color.GREEN, 20, 20, 20);
+        // "Jerome McCoolSwag"
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
         
         Timer timer = new Timer(1000/60, this);
         timer.start();
+    }
+    
+    public void startGame()
+    {
+        player = new Cell(game.getTitleScreen().getUsername(), Color.GREEN, 20, 20, 20);
     }
     
     /**
