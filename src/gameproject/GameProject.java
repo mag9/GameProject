@@ -63,6 +63,10 @@ public class GameProject
         
         titleScreen.getStartButton().requestFocus();
         frame.getRootPane().setDefaultButton(titleScreen.getStartButton());
+        
+        // Start the music
+        Thread musicThread = new Thread(new MusicPlayer());
+        musicThread.start();
     }
     
     /**
