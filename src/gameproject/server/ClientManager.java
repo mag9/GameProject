@@ -5,6 +5,8 @@
  */
 package gameproject.server;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.allgofree.blitzio.engine.AbstractClientManager;
 import net.allgofree.blitzio.engine.AbstractEngine;
 
@@ -23,6 +25,14 @@ public class ClientManager extends AbstractClientManager<Client>
     public ClientManager(AbstractEngine engine, long tickRate)
     {
         super(engine, tickRate);
+        try
+        {
+            getPacketReader().addAllFromPackage("gameproject.server.packets.in");
+            getPacketWriter().addAllFromPackage("gameproject.server.packets.out");
+        } catch (Exception ex)
+        {
+            Logger.getLogger(ClientManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
