@@ -80,7 +80,7 @@ public class Cell extends Circle
      */
     public int getRadius()
     {
-        return radius;
+        return (int)radius;
     }
     
     /**
@@ -98,7 +98,7 @@ public class Cell extends Circle
      */
     public int getSize()
     {
-        return radius * 2;
+        return (int)radius * 2;
     }
     
     /**
@@ -152,16 +152,18 @@ public class Cell extends Circle
     {
         Graphics2D g2d = (Graphics2D) g;
         
+        int radiusInt = (int) radius;
+        
         g2d.setColor(color);
-        g2d.fillOval(x, y, radius * 2, radius * 2);
+        g2d.fillOval(x, y, radiusInt * 2, radiusInt * 2);
         
         g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(3));
-        g2d.drawOval(x, y, radius * 2, radius * 2);
+        g2d.drawOval(x, y, radiusInt * 2, radiusInt * 2);
         
         // Centers and draws the username over the player
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
-        g2d.drawString(username, x - (nameWidth / 2) + (radius), y - 5);
+        g2d.drawString(username, x - (nameWidth / 2) + (radiusInt), y + radiusInt);
         
         move(velocityX*3, velocityY*3);
     }
@@ -175,6 +177,11 @@ public class Cell extends Circle
     {
         x = x + deltaX;
         y = y + deltaY;
+    }
+
+    public void consume(NibblyBits next)
+    {
+        radius += 0.5D;
     }
     
 }

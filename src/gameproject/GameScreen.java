@@ -96,6 +96,8 @@ public class GameScreen extends JPanel implements ActionListener
             {
                 // Remove it
                 iterator.remove();
+                
+                player.consume(next);
             }
             {
                 next.draw(g2d);
