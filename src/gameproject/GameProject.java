@@ -12,12 +12,12 @@ public class GameProject
     /**
      * The width of the game.
      */
-    public static int WIDTH = 800;
+    public static int WIDTH = 1210;
     
     /**
      * The height of the game.
      */
-    public static int HEIGHT = 600;
+    public static int HEIGHT = 650;
     
     /**
      * The game's window.

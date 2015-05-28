@@ -2,6 +2,7 @@ package gameproject;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics2D;
 
@@ -17,6 +18,8 @@ public class Cell extends Circle
      * The color of the cell.
      */
     private final Color color;
+    
+    private final Color outerColor;
     
     /**
      * The X velocity of the cell.
@@ -39,6 +42,13 @@ public class Cell extends Circle
     private final String username;
     
     /**
+     * The font to use for drawing.
+     */
+    private Font font;
+    
+    private double fontSize;
+    
+    /**
      * Constructor
      * @param x The X position of the player/cell.
      * @param y The Y position of the player/cell.
@@ -54,6 +64,9 @@ public class Cell extends Circle
         this.velocityX = 0;
         this.velocityY = 0;
         this.username = username;
+        this.outerColor = new Color(19, 158, 25);
+        this.fontSize = 8;
+        this.font = new Font("Ubuntu", Font.BOLD, (int)fontSize);
     }
     
     /**
@@ -157,11 +170,13 @@ public class Cell extends Circle
         g2d.setColor(color);
         g2d.fillOval(x, y, radiusInt * 2, radiusInt * 2);
         
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(outerColor);
         g2d.setStroke(new BasicStroke(3));
         g2d.drawOval(x, y, radiusInt * 2, radiusInt * 2);
         
         // Centers and draws the username over the player
+        g2d.setColor(Color.black);
+        g2d.setFont(font);
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
         g2d.drawString(username, x - (nameWidth / 2) + (radiusInt), y + radiusInt);
         
@@ -182,6 +197,8 @@ public class Cell extends Circle
     public void consume(NibblyBits next)
     {
         radius += 0.5D;
+        fontSize += 0.25;
+        font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
     }
     
 }
