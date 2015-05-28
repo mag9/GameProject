@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics2D;
+import static java.lang.Math.pow;
 
 /**
  * A Cell in the game.
@@ -72,7 +73,7 @@ public class Cell extends Circle
         this.outerColor = new Color(19, 158, 25);
         this.fontSize = 8;
         this.font = new Font("Ubuntu", Font.BOLD, (int)fontSize);
-        this.speed = 20 / this.radius;
+        calculateSpeed();
     }
     
     /**
@@ -214,7 +215,12 @@ public class Cell extends Circle
         radius += 0.5D;
         fontSize = radius / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
-        speed = 20 / this.radius;
+        calculateSpeed();
+    }
+    
+    private void calculateSpeed()
+    {
+        speed = pow((17.0/20), radius - 20);
     }
     
 }
