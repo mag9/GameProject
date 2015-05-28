@@ -174,6 +174,7 @@ public class Cell
         g2d.setStroke(new BasicStroke(3));
         g2d.drawOval(x, y, radius * 2, radius * 2);
         
+        // Centers and draws the username over the player
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
         g2d.drawString(username, x - (nameWidth / 2) + (radius), y - 5);
         

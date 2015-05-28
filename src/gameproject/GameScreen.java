@@ -18,6 +18,11 @@ public class GameScreen extends JPanel implements ActionListener
     private final Cell player;
     
     /**
+     * A nibbly bit.
+     */
+    private final NibblyBits nb;
+    
+    /**
      * The background image.
      */
     private final Image backgroundImage;
@@ -37,6 +42,7 @@ public class GameScreen extends JPanel implements ActionListener
         addKeyListener(new GameKeyListener());
         setFocusable(true);
         
+        nb = new NibblyBits();
         player = new Cell("Jerome McCoolSwag", Color.GREEN, 20, 20, 20);
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
@@ -67,6 +73,9 @@ public class GameScreen extends JPanel implements ActionListener
 
         // Draw the background.
         g2d.drawImage(backgroundImage, 0, 0, null);
+       
+        //Draw the nibbly bit.
+        nb.draw(g2d);
         
         // Draw the player.
         player.draw(g2d);
