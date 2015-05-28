@@ -46,6 +46,11 @@ public class Cell extends Circle
      */
     private Font font;
     
+    /**
+     * The player's speed.
+     */
+    private double speed;
+    
     private double fontSize;
     
     /**
@@ -67,6 +72,7 @@ public class Cell extends Circle
         this.outerColor = new Color(19, 158, 25);
         this.fontSize = 8;
         this.font = new Font("Ubuntu", Font.BOLD, (int)fontSize);
+        this.speed = 20 / this.radius;
     }
     
     /**
@@ -85,6 +91,15 @@ public class Cell extends Circle
     public int getY()
     {
         return y;
+    }
+    
+    /**
+     * Get the player's speed.
+     * @return The player's speed.
+     */
+    public double getSpeed()
+    {
+        return this.speed;
     }
     
     /**
@@ -180,7 +195,7 @@ public class Cell extends Circle
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
         g2d.drawString(username, x - (nameWidth / 2) + (radiusInt), y + radiusInt);
         
-        move(velocityX*3, velocityY*3);
+        move((int)(velocityX*3*speed), (int)(velocityY*3*speed));
     }
     
     /**
@@ -199,6 +214,7 @@ public class Cell extends Circle
         radius += 0.5D;
         fontSize = radius / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
+        speed = 20 / this.radius;
     }
     
 }
