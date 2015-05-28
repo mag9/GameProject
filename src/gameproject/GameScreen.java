@@ -1,5 +1,6 @@
 package gameproject;
 
+import gameproject.client.GameClient;
 import java.awt.*;
 import java.awt.Image;
 import java.awt.event.*;
@@ -14,10 +15,6 @@ import javax.swing.*;
 
 public class GameScreen extends JPanel implements ActionListener
 {
-    /**
-     * The player's cell.
-     */
-    private Cell player;
     
     /**
      * The nibbly bits.
@@ -35,6 +32,16 @@ public class GameScreen extends JPanel implements ActionListener
     private final GameProject game;
     
     /**
+     * The list of other cells.
+     */
+    private final ArrayList<Cell> cells;
+    
+    /**
+     * The player's cell.
+     */
+    private Cell player;
+    
+    /**
      * Creates a new GameScreen.
      * @param game The instance of the game.
      */
@@ -45,6 +52,7 @@ public class GameScreen extends JPanel implements ActionListener
         setFocusable(true);
         
         bits = new ArrayList<NibblyBits>();
+        cells = new ArrayList<Cell>();
         // "Jerome McCoolSwag"
         
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
@@ -55,7 +63,12 @@ public class GameScreen extends JPanel implements ActionListener
     
     public void startGame()
     {
+        GameClient client = new GameClient();
+        client.connect();
+        
+        cells.clear();
         player = new Cell(game.getTitleScreen().getUsername(), Color.GREEN, 20, 20, 20);
+        cells.add(new Cell("Test Cell", Color.RED, 40, 40, 20));
         
         for (int i = 0; i < 200; i++)
         {
@@ -104,6 +117,11 @@ public class GameScreen extends JPanel implements ActionListener
             }
         }
         
+        // Draw the other cells
+        for (Cell next : cells)
+        {
+            next.draw(g2d);
+        }
         
         // Draw the player.
         player.draw(g2d);

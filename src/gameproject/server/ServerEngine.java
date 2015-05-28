@@ -16,6 +16,11 @@ public class ServerEngine extends AbstractEngine
 {
     
     /**
+     * The port to listen on.
+     */
+    public static final int PORT = 20325;
+    
+    /**
      * The manager for all of the connected game clients.
      */
     private final ClientManager clientManager;
@@ -37,7 +42,7 @@ public class ServerEngine extends AbstractEngine
         
         // Create our listener object and tell it what port to listen on
         listener = new NettyLife();
-        listener.addPort(20325);
+        listener.addPort(PORT);
     }
     
     /**
