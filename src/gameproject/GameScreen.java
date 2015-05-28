@@ -53,8 +53,8 @@ public class GameScreen extends JPanel implements ActionListener
         
         bits = new ArrayList<NibblyBits>();
         cells = new ArrayList<Cell>();
-        // "Jerome McCoolSwag"
         
+        // "Jerome McCoolSwag"
         backgroundImage = new ImageIcon(getClass().getResource("/gameproject/res/graphics/back.png")).getImage();
         
         Timer timer = new Timer(1000/60, this);

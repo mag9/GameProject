@@ -197,7 +197,7 @@ public class Cell extends Circle
     public void consume(NibblyBits next)
     {
         radius += 0.5D;
-        fontSize += 0.25;
+        fontSize = radius / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
     }
     
