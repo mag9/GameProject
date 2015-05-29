@@ -73,7 +73,7 @@ public class Cell extends Circle
         this.velocityX = 0;
         this.velocityY = 0;
         this.friction = 0.45;
-        this.speed = 3;
+        this.speed = 10;
         this.username = username;
         this.outerColor = new Color(19, 158, 25);
         this.fontSize = 8;
@@ -184,7 +184,7 @@ public class Cell extends Circle
     
     private void calculateSpeed()
     {
-        speed = Math.pow((19.0/20), radius - 20);
+        speed = speed * Math.pow((999.0/1000), radius - 20);
     }
     
 }
