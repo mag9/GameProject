@@ -38,7 +38,7 @@ public class Cell extends Circle
      /**
       * The max speed.
       */
-     private final int speed;
+     private double speed;
     
     /**
      * The cell's current score.
@@ -172,15 +172,19 @@ public class Cell extends Circle
 
     public void consume(NibblyBits next)
     {
-        setRadius(getRadius() + 0.5D);
-        fontSize = getRadius() / 2.5;
+        double xc = getCenterX();
+        double yc = getCenterY();
+        radius += 0.5D;
+        fontSize = radius / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
         calculateSpeed();
+        this.x = xc - this.radius;
+        this.y = yc - this.radius;
     }
     
     private void calculateSpeed()
     {
-        speed = pow((19.0/20), radius - 20);
+        speed = Math.pow((19.0/20), radius - 20);
     }
     
 }
