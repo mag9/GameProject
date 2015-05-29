@@ -19,7 +19,7 @@
             </classpath>
         </taskdef>
         
-        <property name="launch4j.dir" location="${build.dir}/../launch4j" />
+        <property name="launch4j.dir" location="${build.dir}/../libraries/launch4j" />
         <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar :${launch4j.dir}/lib/xstream.jar" />
         
         <jar update="true" destfile="${dist.jar}">
@@ -32,7 +32,7 @@
         
         <launch4j configFile="${dist.dir}/../launch4j.xml" />
         
-        <move file="OHS Agar.exe" todir="dist/"/>
+        <move file="OHS Agar.exe" todir="dist/" />
         
     </target>
     
