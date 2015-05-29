@@ -41,18 +41,6 @@ public class GameProject
      */
     public GameProject(String title)
     {
-        // Start the server
-        new Thread(new Runnable() {
-
-            @Override
-            public void run()
-            {
-                ServerEngine.main(new String[] {});
-            }
-        }).start();
-        
-        
-        
         // Create a new frame
         frame = new JFrame(title);
         
@@ -80,6 +68,16 @@ public class GameProject
         // Start the music
         Thread musicThread = new Thread(new MusicPlayer());
         musicThread.start();
+        
+        // Start the server
+        new Thread(new Runnable() {
+
+            @Override
+            public void run()
+            {
+                ServerEngine.main(new String[] {});
+            }
+        }).start();
     }
     
     /**

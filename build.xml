@@ -10,6 +10,32 @@
 <project name="GameProject" default="default" basedir=".">
     <description>Builds, tests, and runs the project GameProject.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+    <target name="-post-jar">
+        
+        <taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler">
+            <classpath>
+                <pathelement location="${build.dir}/../libraries/jarbundler-2.1.0.jar"/>
+            </classpath>
+        </taskdef>
+        
+        <property name="launch4j.dir" location="${build.dir}/../launch4j" />
+        <taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar :${launch4j.dir}/lib/xstream.jar" />
+        
+        <jar update="true" destfile="${dist.jar}">
+            <zipfileset src="${build.dir}/../libraries/jl1.0.1.jar"/>
+            <zipfileset src="${build.dir}/../libraries/LibSapphire.jar"/>
+            <zipfileset src="${build.dir}/../libraries/netty-3.9.0.Final.jar"/>
+        </jar>
+        
+        <jarbundler dir="${dist.dir}" name="OHS Agar" mainclass="gameproject.GameProject" vmoptions="-Xmx256M" jar="${dist.jar}" icon="${build.dir}/../src/gameproject/res/graphics/icon.icns" arguments="" />
+        
+        <launch4j configFile="${dist.dir}/../launch4j.xml" />
+        
+        <move file="OHS Agar.exe" todir="dist/"/>
+        
+    </target>
+    
     <!--
 
     There exist several targets which are by default empty and which can be 
