@@ -175,6 +175,12 @@ public class Cell extends Circle
         setRadius(getRadius() + 0.5D);
         fontSize = getRadius() / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
+        calculateSpeed();
+    }
+    
+    private void calculateSpeed()
+    {
+        speed = pow((19.0/20), radius - 20);
     }
     
 }
