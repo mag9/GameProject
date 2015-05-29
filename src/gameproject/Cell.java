@@ -53,11 +53,6 @@ public class Cell extends Circle
      */
     private Font font;
     
-    /**
-     * The player's speed.
-     */
-    private double speed;
-    
     private double fontSize;
     
     /**
@@ -81,7 +76,6 @@ public class Cell extends Circle
         this.outerColor = new Color(19, 158, 25);
         this.fontSize = 8;
         this.font = new Font("Ubuntu", Font.BOLD, (int)fontSize);
-        calculateSpeed();
     }
     
     /**
@@ -100,15 +94,6 @@ public class Cell extends Circle
     public double getY()
     {
         return y;
-    }
-    
-    /**
-     * Get the player's speed.
-     * @return The player's speed.
-     */
-    public double getSpeed()
-    {
-        return this.speed;
     }
     
     /**
@@ -224,12 +209,6 @@ public class Cell extends Circle
         radius += 0.5D;
         fontSize = radius / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
-        calculateSpeed();
-    }
-    
-    private void calculateSpeed()
-    {
-        speed = pow((17.0/20), radius - 20);
     }
     
 }
