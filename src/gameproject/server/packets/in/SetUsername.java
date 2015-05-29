@@ -25,6 +25,8 @@ public class SetUsername implements PacketHandler
         String username = packet.readStringAGF();
         int rgbColor = packet.readDWord();
         Color color = new Color(rgbColor);
+        
+        client.setUsernameAndColor(username, color);
     }
 
     @Override

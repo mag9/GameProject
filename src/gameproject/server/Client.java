@@ -108,4 +108,14 @@ public class Client extends AbstractClient
         getWorld().addCell(this);
     }
     
+    public void write(int id, Object... parameters)
+    {
+        getManager().getPacketWriter().write(getStream().getOutStream(), id, parameters);
+    }
+    
+    public ClientManager getManager()
+    {
+        return manager;
+    }
+    
 }

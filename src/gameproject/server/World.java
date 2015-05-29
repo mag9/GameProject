@@ -8,6 +8,10 @@ package gameproject.server;
 import gameproject.GameProject;
 import gameproject.NibblyBits;
 import gameproject.Random;
+import gameproject.server.packets.out.AddCell;
+import gameproject.server.packets.out.AddNibblyBit;
+import gameproject.server.packets.out.CellMoved;
+import gameproject.server.packets.out.RemoveCell;
 import java.util.ArrayList;
 import net.allgofree.updater.Updatable;
 
@@ -75,20 +79,23 @@ public class World implements Updatable
     
     /**
      * Add a new cell.
-     * @param client The client cell.
+     * @param cell The client cell.
      */
     public void addCell(Client cell)
     {
         // Send all other cells to the client
+        // and the cell to all other clients
         for (Client next : cells)
         {
+            cell.write(AddCell.ID, next);
             
+            next.write(AddCell.ID, cell);
         }
         
         // Send all the bits to the client
         for (NibblyBits next : bits)
         {
-            
+            cell.write(AddNibblyBit.ID, next);
         }
         
         // Add the cell to the game
@@ -107,7 +114,11 @@ public class World implements Updatable
         // that this one has died
         for (Client next : cells)
         {
-            
+            if (next == cell)
+            {
+                continue;
+            }
+            next.write(RemoveCell.ID, cell);
         }
     }
     
@@ -130,6 +141,12 @@ public class World implements Updatable
     private void addBits(NibblyBits newBits)
     {
         bits.add(newBits);
+        
+        // Send the bits to all cells
+        for (Client next : cells)
+        {
+            next.write(AddNibblyBit.ID, newBits);
+        }
     }
     
     /**
@@ -147,6 +164,15 @@ public class World implements Updatable
      */
     public void cellMoved(Client client)
     {
-        
+        // Send the movement to all the other cells
+        for (Client next : cells)
+        {
+            if (next == client)
+            {
+                continue;
+            }
+            
+            next.write(CellMoved.ID, client);
+        }
     }
 }
