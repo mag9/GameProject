@@ -14,26 +14,26 @@ public class Circle
     /**
      * The X location of the cell.
      */
-    protected int x;
+    protected double x;
     
     /**
      * The Y location of the cell.
      */
-    protected int y;
+    protected double y;
     
     /**
      * The radius of the cell.
      */
     protected double radius;
     
-    public int getCenterX()
+    public double getCenterX()
     {
-        return x + (int)radius;
+        return x + radius;
     }
     
-    public int getCenterY()
+    public double getCenterY()
     {
-        return y + (int)radius;
+        return y + radius;
     }
     
     public boolean collidesWith(Circle other)

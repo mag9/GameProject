@@ -96,6 +96,9 @@ public class GameScreen extends JPanel implements ActionListener
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        // Makes everything that is drawn in the GameScreen anti-aliased!
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
         // Draw the background.
         g2d.drawImage(backgroundImage, 0, 0, null);
        

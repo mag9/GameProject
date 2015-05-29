@@ -1,11 +1,7 @@
 package gameproject;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.Graphics2D;
-import static java.lang.Math.pow;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * A Cell in the game.
@@ -25,12 +21,22 @@ public class Cell extends Circle
     /**
      * The X velocity of the cell.
      */
-    private int velocityX;
+    private double velocityX;
     
     /**
      * The Y velocity of the cell.
      */
-    private int velocityY;
+    private double velocityY;
+    
+    /**
+     * The friction on the cells movement.
+     */
+     private final double friction;
+     
+     /**
+      * The max speed.
+      */
+     private final int speed;
     
     /**
      * The cell's current score.
@@ -69,6 +75,8 @@ public class Cell extends Circle
         this.radius = r;
         this.velocityX = 0;
         this.velocityY = 0;
+        this.friction = 0.45;
+        this.speed = 3;
         this.username = username;
         this.outerColor = new Color(19, 158, 25);
         this.fontSize = 8;
@@ -80,7 +88,7 @@ public class Cell extends Circle
      * Get the player's X position.
      * @return The player's X position.
      */
-    public int getX()
+    public double getX()
     {
         return x;
     }
@@ -89,7 +97,7 @@ public class Cell extends Circle
      * Get the player's Y position.
      * @return The player's Y position.
      */
-    public int getY()
+    public double getY()
     {
         return y;
     }
@@ -161,16 +169,16 @@ public class Cell extends Circle
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT)
-            velocityX = 0;
+            velocityX *= friction;
 
         if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT)
-            velocityX = 0;
+            velocityX *= friction;
 
         if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP)
-            velocityY = 0;
+            velocityY *= friction;
 
         if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN)
-            velocityY = 0;
+            velocityY *= friction;
     }
     
     /**
@@ -184,19 +192,20 @@ public class Cell extends Circle
         int radiusInt = (int) radius;
         
         g2d.setColor(color);
-        g2d.fillOval(x, y, radiusInt * 2, radiusInt * 2);
+        g2d.fillOval((int) x, (int) y, radiusInt * 2, radiusInt * 2);
         
         g2d.setColor(outerColor);
         g2d.setStroke(new BasicStroke(3));
-        g2d.drawOval(x, y, radiusInt * 2, radiusInt * 2);
+        g2d.drawOval((int) x, (int) y, radiusInt * 2, radiusInt * 2);
         
-        // Centers and draws the username over the player
+        // Centers and draws the username in the player
         g2d.setColor(Color.black);
         g2d.setFont(font);
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
-        g2d.drawString(username, x - (nameWidth / 2) + (radiusInt), y + radiusInt);
+        int nameHeight = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getHeight();
+        g2d.drawString(username, (int) x + (radiusInt) - (nameWidth / 2), (int) (y + radiusInt) + (nameHeight / 4));
         
-        move((int)(velocityX*3*speed), (int)(velocityY*3*speed));
+        move(velocityX * speed, velocityY * speed);
     }
     
     /**
@@ -204,10 +213,10 @@ public class Cell extends Circle
      * @param deltaX The delta X value.
      * @param deltaY The delta Y value.
      */
-    public void move(int deltaX, int deltaY)
+    public void move(double deltaX, double deltaY)
     {
-        x = x + deltaX;
-        y = y + deltaY;
+        x = x + deltaX * friction;
+        y = y + deltaY * friction;
     }
 
     public void consume(NibblyBits next)

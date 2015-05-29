@@ -65,7 +65,7 @@ public class NibblyBits extends Circle
         Graphics2D g2d = (Graphics2D) g;
         
         g2d.setColor(color);
-        g2d.fillOval(x, y, size * 10, size  * 10);
+        g2d.fillOval((int) x, (int) y, size * 10, size  * 10);
         
         /*if(checkCollision() == false)
         {
