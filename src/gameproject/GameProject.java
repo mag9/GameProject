@@ -1,5 +1,6 @@
 package gameproject;
 
+import gameproject.server.ServerEngine;
 import javax.swing.*;
 
 /**
@@ -40,6 +41,18 @@ public class GameProject
      */
     public GameProject(String title)
     {
+        // Start the server
+        new Thread(new Runnable() {
+
+            @Override
+            public void run()
+            {
+                ServerEngine.main(new String[] {});
+            }
+        }).start();
+        
+        
+        
         // Create a new frame
         frame = new JFrame(title);
         

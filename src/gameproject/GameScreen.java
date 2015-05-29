@@ -67,8 +67,8 @@ public class GameScreen extends JPanel implements ActionListener
         client.connect();
         
         cells.clear();
-        player = new Cell(game.getTitleScreen().getUsername(), Color.GREEN, 20, 20, 20);
-        cells.add(new Cell("Test Cell", Color.RED, 40, 40, 20));
+        player = new Cell(game.getTitleScreen().getUsername(), Color.GREEN, 20, 20, Cell.STARTING_RADIUS);
+        cells.add(new Cell("Test Cell", Color.RED, 40, 40, Cell.STARTING_RADIUS));
         
         for (int i = 0; i < 200; i++)
         {
