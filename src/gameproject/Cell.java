@@ -10,6 +10,8 @@ import java.awt.event.*;
 
 public class Cell extends Circle
 {
+    
+    public static final int STARTING_RADIUS = 20;
         
     /**
      * The color of the cell.
@@ -79,48 +81,12 @@ public class Cell extends Circle
     }
     
     /**
-     * Get the player's X position.
-     * @return The player's X position.
-     */
-    public double getX()
-    {
-        return x;
-    }
-    
-    /**
-     * Get the player's Y position.
-     * @return The player's Y position.
-     */
-    public double getY()
-    {
-        return y;
-    }
-    
-    /**
-     * Get the cell's radius.
-     * @return The cell's current radius.
-     */
-    public int getRadius()
-    {
-        return (int)radius;
-    }
-    
-    /**
-     * Set the cell's radius.
-     * @param radius The radius.
-     */
-    public void setRadius(int radius)
-    {
-        this.radius = radius;
-    }
-    
-    /**
      * Get the current size of the cell.
      * @return The current size.
      */
     public int getSize()
     {
-        return (int)radius * 2;
+        return (int)getRadius() * 2;
     }
     
     /**
@@ -174,21 +140,21 @@ public class Cell extends Circle
     {
         Graphics2D g2d = (Graphics2D) g;
         
-        int radiusInt = (int) radius;
+        int radiusInt = (int) getRadius();
         
         g2d.setColor(color);
-        g2d.fillOval((int) x, (int) y, radiusInt * 2, radiusInt * 2);
+        g2d.fillOval((int) getX(), (int) getY(), radiusInt * 2, radiusInt * 2);
         
         g2d.setColor(outerColor);
         g2d.setStroke(new BasicStroke(3));
-        g2d.drawOval((int) x, (int) y, radiusInt * 2, radiusInt * 2);
+        g2d.drawOval((int) getX(), (int) getY(), radiusInt * 2, radiusInt * 2);
         
         // Centers and draws the username in the player
         g2d.setColor(Color.black);
         g2d.setFont(font);
         int nameWidth = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getWidth();
         int nameHeight = (int) g2d.getFontMetrics().getStringBounds(username, g2d).getHeight();
-        g2d.drawString(username, (int) x + (radiusInt) - (nameWidth / 2), (int) (y + radiusInt) + (nameHeight / 4));
+        g2d.drawString(username, (int) getX() + (radiusInt) - (nameWidth / 2), (int) (getY() + radiusInt) + (nameHeight / 4));
         
         move(velocityX * speed, velocityY * speed);
     }
@@ -200,14 +166,14 @@ public class Cell extends Circle
      */
     public void move(double deltaX, double deltaY)
     {
-        x = x + deltaX * friction;
-        y = y + deltaY * friction;
+        setX(getX() + deltaX * friction);
+        setY(getY() + deltaY * friction);
     }
 
     public void consume(NibblyBits next)
     {
-        radius += 0.5D;
-        fontSize = radius / 2.5;
+        setRadius(getRadius() + 0.5D);
+        fontSize = getRadius() / 2.5;
         font = new Font("Ubuntu", Font.BOLD, (int) fontSize);
     }
     

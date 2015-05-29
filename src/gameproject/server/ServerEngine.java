@@ -62,6 +62,7 @@ public class ServerEngine extends AbstractEngine
         // so that they actually do work!
         getUpdater().addUpdate(clientManager);
         getUpdater().addUpdate(authenticator);
+        getUpdater().addUpdate(clientManager.getWorld());
         
         // Start the listener
         listener.startLifeThread();
